@@ -3,8 +3,9 @@ In this lesson, we will apply our knowledge of JavaScript Closures, to create a 
 The plan is:
 
 We will create a parent(in context of closure) todoList function.
-Inside todoList, we will define two child functions add and markAsComplete to perform respective operations.
-And in the end, we will make sure that the todoList function returns the list of all todos along with the add and markAsComplete function.
+The todos array is stored in a closure and can only be accessed and modified through these methods.
+Each todo is represented as an object with a title property and a completed property, which indicates whether the todo is complete or not.
+
 The implementation
 In this lesson, we will make use of the Node.js REPL. Open the terminal and run with the node command to go inside the REPL mode.
 
@@ -14,16 +15,20 @@ First, we will define the todoList function.
 
 const todoList = () =>
 all = []
-Here, we will keep the list of all todos inside the all array. A Todo, would have three properties: title, dueDate, completed (of type boolean). And inside the all array, we will store Todos as an object. For ex. { title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }
+Here, we will keep the list of all todos inside the all array. A Todo, would have three properties: title, dueDate, completed (of type boolean) The add method now takes two arguments: title and dueDate, which are used to create the new todo object. The completed property is initialized to false by default. For ex. { title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }
 
 Next, let's define the add() function.
-
 const todoList = () => {
-all = []
-const add = (todoTask) => {
-all.push(todoTask)
-console.log(all)
-}
+  let all = [];
+
+  return {
+    add: function(title, dueDate) {
+      all.push({
+        title: title,
+        dueDate: dueDate,
+        completed: false
+      });
+    },
 The add() function takes a todoTask as argument, and pushes into the all array.
 
 Similarly, we will define the markAsComplete() function.
@@ -38,9 +43,7 @@ const markAsComplete = (index) => {
 all[index].completed = true
 console.log(all)
 }
-Here, the markAsComplete() function takes an argument called index. It updates the all array using the index, and marks that specific Todo as completed .
-
-To complete the todoList function, we will return the all array and add, markAsComplete functions.
+The markAsComplete function takes a single argument index, which is used to access the todo object in the all array and set its completed property to true.
 
 const todoList = () => {
 all = []
