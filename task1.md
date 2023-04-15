@@ -1,6 +1,6 @@
-In this lesson, we will apply our knowledge of JavaScript Closures, to create a simple Todo manager.
+In this lesson, we will apply our knowledge of JavaScript Closures, to create a simple Todo manager. 
 
-The plan is:
+The plan is: 
 
 We will create a parent(in context of closure) todoList function.
 Inside todoList, we will define two child functions add and markAsComplete to perform respective operations.
@@ -77,3 +77,4 @@ First, in the terminal, we will call the todoList() function.
 > So, it's working!
 
 As we've learned before, in this example, the two functions add and markAsComplete had preserved the legacy variable all when the todoList() function was executed, and continued to preserve (closure) it.
+
