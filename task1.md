@@ -66,14 +66,16 @@ First, in the terminal, we will call the todoList() function.
 
 > todos.add({ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false })
 > [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }] // Output
+> > todos.add({ title: 'I need to get multi vitamins', dueDate: '22-06-2022', completed: false })
+> [{ title: 'I need to get multi vitamins', dueDate: '22-06-2022', completed: false }] // Output
 > todos.add({ title: 'Have to buy potato', dueDate: '22-06-2022', completed: false })
-> [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }, { title: 'Have to buy potato', dueDate: '22-06-2022', completed: false }] // Output
+> [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false },{ title: 'I need to go to get multivitamins', dueDate: '22-06-2022', completed: false } { title: 'Have to buy potato', dueDate: '22-06-2022', completed: false }] // Output
 > todos.all
-> [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }, { title: 'Have to buy potato', dueDate: '22-06-2022', completed: false }] // Output
+> [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false },{ title: 'I need to get multivitamins', dueDate: '22-06-2022', completed: false }, { title: 'Have to buy potato', dueDate: '22-06-2022', completed: false }] // Output
 > To mark a Todo as complete
 
 > todos.markAsComplete(1) // Here 1 is the array index
-> [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }, { title: 'Have to buy potato', dueDate: '22-06-2022', completed: true }] // Output
+> [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false },{ title: 'I need to go to get multivitamins', dueDate: '22-06-2022', completed: false }, { title: 'Have to buy potato', dueDate: '22-06-2022', completed: true }] // Output
 > So, it's working!
 
 As we've learned before, in this example, the two functions add and markAsComplete had preserved the legacy variable all when the todoList() function was executed, and continued to preserve (closure) it.
