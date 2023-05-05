@@ -2,9 +2,10 @@ In this lesson, we will apply our knowledge of JavaScript Closures, to create a 
 
 The plan is:
 
-We will create a parent(in context of closure) todoList function.
-Inside todoList, we will define two child functions add and markAsComplete to perform respective operations.
-And in the end, we will make sure that the todoList function returns the list of all todos along with the add and markAsComplete function.
+1. We will create a parent(in context of closure) todoList function.
+2. Inside todoList, we will define two child functions add and markAsComplete to perform respective operations.
+3. And in the end, we will make sure that the todoList function returns the list of all todos along with the add and markAsComplete function.
+
 The implementation
 In this lesson, we will make use of the Node.js REPL. Open the terminal and run with the node command to go inside the REPL mode.
 
@@ -54,6 +55,7 @@ console.log(all)
 }
 return { all, add, markAsComplete };
 }
+
 Let's test it out
 First, in the terminal, we will call the todoList() function.
 
