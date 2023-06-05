@@ -1,79 +1,54 @@
-In this lesson, we will apply our knowledge of JavaScript Closures, to create a simple Todo manager.
+In this lesson, we will use JavaScript Closures to create a simple Todo manager. A Todo manager is a tool that helps us keep track of our tasks and mark them as completed.
 
-The plan is:
+To do this, we will follow these steps:
 
-We will create a parent(in context of closure) todoList function.
-Inside todoList, we will define two child functions add and markAsComplete to perform respective operations.
-And in the end, we will make sure that the todoList function returns the list of all todos along with the add and markAsComplete function.
-The implementation
-In this lesson, we will make use of the Node.js REPL. Open the terminal and run with the node command to go inside the REPL mode.
+We will create a function called todoList that will act as the parent function in the context of closure. This function will have an array called all that will store all the todos as objects. Each todo object will have three properties: title, dueDate, and completed (a boolean value).
+Inside the todoList function, we will define two child functions: add and markAsComplete. The add function will take a todo object as an argument and push it into the all array. The markAsComplete function will take an index as an argument and update the completed property of the todo object at that index in the all array.
+Finally, we will return the all array and the add and markAsComplete functions from the todoList function.
+We will use the Node.js REPL to test our code. To enter the REPL mode, open the terminal and run the node command.
 
-So, let's get started.
+Let’s start coding.
 
-First, we will define the todoList function.
+First, we will define the todoList function and the all array.
 
-const todoList = () =>
-all = []
-Here, we will keep the list of all todos inside the all array. A Todo, would have three properties: title, dueDate, completed (of type boolean). And inside the all array, we will store Todos as an object. For ex. { title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }
+const todoList = () => { all = []; // rest of the code }
 
-Next, let's define the add() function.
+Next, we will define the add function inside the todoList function.
 
-const todoList = () => {
-all = []
-const add = (todoTask) => {
-all.push(todoTask)
-console.log(all)
-}
-The add() function takes a todoTask as argument, and pushes into the all array.
+const todoList = () => { all = []; const add = (todoTask) => { all.push(todoTask); console.log(all); }; // rest of the code }
 
-Similarly, we will define the markAsComplete() function.
+The add function takes a todoTask object as an argument and adds it to the all array. It also prints the all array to the console.
 
-const todoList = () => {
-all = []
-const add = (todoTask) => {
-all.push(todoTask)
-console.log(all)
-}
-const markAsComplete = (index) => {
-all[index].completed = true
-console.log(all)
-}
-Here, the markAsComplete() function takes an argument called index. It updates the all array using the index, and marks that specific Todo as completed .
+Then, we will define the markAsComplete function inside the todoList function.
 
-To complete the todoList function, we will return the all array and add, markAsComplete functions.
+const todoList = () => { all = []; const add = (todoTask) => { all.push(todoTask); console.log(all); }; const markAsComplete = (index) => { all[index].completed = true; console.log(all); }; // rest of the code }
 
-const todoList = () => {
-all = []
-const add = (todoTask) => {
-all.push(todoTask)
-console.log(all)
-}
-const markAsComplete = (index) => {
-all[index].completed = true
-console.log(all)
-}
-return { all, add, markAsComplete };
-}
-Let's test it out
-First, in the terminal, we will call the todoList() function.
+The markAsComplete function takes an index as an argument and changes the completed property of the todo object at that index in the all array to true. It also prints the all array to the console.
 
-> const todos = todoList()
-> Now, you will be able to see the list of all todos by:
+To finish the todoList function, we will return the all array and the add and markAsComplete functions from it.
 
-> todos.all
-> [] // It will return an empty array
-> To add a new Todo:
+const todoList = () => { all = []; const add = (todoTask) => { all.push(todoTask); console.log(all); }; const markAsComplete = (index) => { all[index].completed = true; console.log(all); }; return { all, add, markAsComplete }; };
 
-> todos.add({ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false })
-> [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }] // Output
-> todos.add({ title: 'Have to buy potato', dueDate: '22-06-2022', completed: false })
-> [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }, { title: 'Have to buy potato', dueDate: '22-06-2022', completed: false }] // Output
-> todos.all
-> [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }, { title: 'Have to buy potato', dueDate: '22-06-2022', completed: false }] // Output
-> To mark a Todo as complete
+Let’s test our code. First, we will call the todoList function and assign it to a variable called todos.
 
-> todos.markAsComplete(1) // Here 1 is the array index
-> [{ title: 'I need to go to gym', dueDate: '22-06-2022', completed: false }, { title: 'Have to buy potato', dueDate: '22-06-2022', completed: true }] // Output
-> So, it's working!
+const todos = todoList();
 
-As we've learned before, in this example, the two functions add and markAsComplete had preserved the legacy variable all when the todoList() function was executed, and continued to preserve (closure) it.
+Now, we can access the list of all todos by using todos.all.
+
+todos.all; []; // It will return an empty array
+
+To add a new todo, we can use todos.add and pass a todo object as an argument.
+
+todos.add({ title: ‘I need to go to gym’, dueDate: ‘22-06-2022’, completed: false }); [{ title: ‘I need to go to gym’, dueDate: ‘22-06-2022’, completed: false }]; // Output
+
+todos.add({ title: ‘Have to buy potato’, dueDate: ‘22-06-2022’, completed: false }); [{ title: ‘I need to go to gym’, dueDate: ‘22-06-2022’, completed: false }, { title: ‘Have to buy potato’, dueDate: ‘22-06-2022’, completed: false }]; // Output
+
+todos.all; [{ title: ‘I need to go to gym’, dueDate: ‘22-06-2022’, completed: false }, { title: ‘Have to buy potato’, dueDate: ‘22-06-2022’, completed: false }]; // Output
+
+To mark a todo as complete, we can use todos.markAsComplete and pass an index as an argument.
+
+todos.markAsComplete(1); // Here 1 is the array index [{ title: ‘I need to go to gym’, dueDate: ‘22-06-2022’, completed: false }, { title: ‘Have to buy potato’, dueDate: ‘22-06-2022’, completed: true }]; // Output
+
+It works!
+
+As we have learned before, in this example, the add and markAsComplete functions have preserved (closure) the variable all when the todoList function was executed, and continued to access and update it.
